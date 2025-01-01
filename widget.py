@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.title("Streamlit Text Input")
 
@@ -15,3 +16,9 @@ st.write(f"Your age: {age}")
 options = ["Pyhton", "C", "C++", "Java"]
 choice = st.selectbox("Choose the preferred language", options)
 st.write(f"You selected {choice}")
+
+upload_file = st.file_uploader("Choose csv file", type="csv")
+
+if upload_file:
+    df = pd.read_csv(upload_file)
+    st.write(df)
